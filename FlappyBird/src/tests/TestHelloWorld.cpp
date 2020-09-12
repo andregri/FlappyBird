@@ -33,7 +33,7 @@ namespace test {
 
 		glGenBuffers(1, &m_IB);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IB);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(float), indices, GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(unsigned int), indices, GL_STATIC_DRAW);
 
 		glBindAttribLocation(program, 0, "a_Position");
 		glBindAttribLocation(program, 1, "a_Color");
@@ -44,7 +44,7 @@ namespace test {
 
 		GLint color_attrib_index = glGetAttribLocation(program, "a_Color");
 		glEnableVertexAttribArray(color_attrib_index);
-		glVertexAttribPointer(color_attrib_index, 3, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void *)(3 * sizeof(float)));
+		glVertexAttribPointer(color_attrib_index, 4, GL_FLOAT, GL_FALSE, 7 * sizeof(float), (void *)(3 * sizeof(float)));
 
 		glBindVertexArray(0);
 		glBindBuffer(GL_ARRAY_BUFFER, 0);

@@ -11,6 +11,7 @@
 
 #include "tests/TestMenu.h"
 #include "tests/TestHelloWorld.h"
+#include "tests/TestTexture2D.h"
 
 int main(void)
 {
@@ -62,6 +63,7 @@ int main(void)
 
 	test::TestMenu test_menu;
 	test_menu.RegisterTest<test::TestHelloWorld>("Hello test!");
+	test_menu.RegisterTest<test::TestTexture2D>("Texture2D");
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
