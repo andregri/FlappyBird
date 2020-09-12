@@ -51,9 +51,9 @@ GLuint Shader::CompileShader(const std::string& filepath, GLenum shader_type)
 		std::unique_ptr<GLchar[]> log_buffer = std::make_unique<GLchar[]>(log_length);
 		glGetShaderInfoLog(shader, 1024, &log_length, log_buffer.get());
 
-		std::cerr << "Failed to compile the"
+		std::cerr << "Failed to compile the "
 			<< (shader_type == GL_VERTEX_SHADER ? "VERTEX" : "FRAGMENT")
-			<< "shader: " << log_buffer << '\n';
+			<< " shader: " << log_buffer << '\n';
 
 		glDeleteShader(shader);
 

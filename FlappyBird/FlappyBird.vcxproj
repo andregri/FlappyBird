@@ -76,7 +76,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src\vendor;$(SolutionDir)Dependencies\glew-2.1.0-win32\glew-2.1.0\include;$(SolutionDir)Dependencies\glfw-3.3.2.bin.WIN32\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;src\vendor;$(SolutionDir)Dependencies\glew-2.1.0-win32\glew-2.1.0\include;$(SolutionDir)Dependencies\glfw-3.3.2.bin.WIN32\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -100,7 +100,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>src\vendor;$(SolutionDir)Dependencies\glew-2.1.0-win32\glew-2.1.0\include;$(SolutionDir)Dependencies\glfw-3.3.2.bin.WIN32\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>src;src\vendor;$(SolutionDir)Dependencies\glew-2.1.0-win32\glew-2.1.0\include;$(SolutionDir)Dependencies\glfw-3.3.2.bin.WIN32\include</AdditionalIncludeDirectories>
       <PreprocessorDefinitions>GLEW_STATIC;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
@@ -435,6 +435,8 @@
     <ClInclude Include="src\tests\TestHelloWorld.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\tests\test_shaders\fragment.shader.glsl" />
+    <None Include="src\tests\test_shaders\vertex.shader.glsl" />
     <None Include="src\vendor\glm\detail\func_common.inl" />
     <None Include="src\vendor\glm\detail\func_common_simd.inl" />
     <None Include="src\vendor\glm\detail\func_exponential.inl" />

@@ -1345,5 +1345,7 @@
     <None Include="src\vendor\glm\gtx\wrap.inl">
       <Filter>File di intestazione</Filter>
     </None>
+    <None Include="src\tests\test_shaders\fragment.shader.glsl" />
+    <None Include="src\tests\test_shaders\vertex.shader.glsl" />
   </ItemGroup>
 </Project>
