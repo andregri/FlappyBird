@@ -8,6 +8,7 @@ namespace test {
 		Test();
 		~Test();
 
+		virtual void OnUpdate() {};
 		virtual void OnRender() {};
 		virtual void OnImGuiRender() = 0;
 	};

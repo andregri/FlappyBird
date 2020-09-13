@@ -55,9 +55,9 @@ namespace test {
 		glEnableVertexAttribArray(color_attrib_index);
 		glEnableVertexAttribArray(texcoord_attrib_index);
 
-		glVertexAttribPointer(position_attrib_index,3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)0);
-		glVertexAttribPointer(color_attrib_index,	4, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(3 * sizeof(float)));
-		glVertexAttribPointer(texcoord_attrib_index,2, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(7 * sizeof(float)));
+		glVertexAttribPointer(position_attrib_index, 3, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)0);
+		glVertexAttribPointer(color_attrib_index,	 4, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(3 * sizeof(float)));
+		glVertexAttribPointer(texcoord_attrib_index, 2, GL_FLOAT, GL_FALSE, 9 * sizeof(float), (void*)(7 * sizeof(float)));
 
 		// Load the texture
 		glGenTextures(1, &m_Texture);

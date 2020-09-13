@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -125,6 +125,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\Bird.cpp" />
+    <ClCompile Include="src\Error.cpp" />
+    <ClCompile Include="src\Level.cpp" />
+    <ClCompile Include="src\Game.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\vendor\glm\detail\glm.cpp" />
@@ -139,8 +143,16 @@
     <ClCompile Include="src\tests\TestHelloWorld.cpp" />
     <ClCompile Include="src\tests\TestTexture2D.cpp" />
     <ClCompile Include="src\vendor\stb_image\stb_image.cpp" />
+    <ClCompile Include="src\Texture2D.cpp" />
+    <ClCompile Include="src\VertexArray.cpp" />
+    <ClCompile Include="src\tests\TestMVP.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Bird.h" />
+    <ClInclude Include="res\Error.h" />
+    <ClInclude Include="src\Error.h" />
+    <ClInclude Include="src\Level.h" />
+    <ClInclude Include="src\Game.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\vendor\glm\common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_common.hpp" />
@@ -437,8 +449,15 @@
     <ClInclude Include="src\tests\TestHelloWorld.h" />
     <ClInclude Include="src\tests\TestTexture2D.h" />
     <ClInclude Include="src\vendor\stb_image\stb_image.h" />
+    <ClInclude Include="src\Texture2D.h" />
+    <ClInclude Include="src\VertexArray.h" />
+    <ClInclude Include="src\tests\TestMVP.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="res\shaders\bg.frag.glsl" />
+    <None Include="res\shaders\bg.vert.glsl" />
+    <None Include="src\tests\test_shaders\frag.glsl" />
+    <None Include="src\tests\test_shaders\vert.glsl" />
     <None Include="src\tests\test_shaders\fragment.shader.glsl" />
     <None Include="src\tests\test_shaders\vertex.shader.glsl" />
     <None Include="src\vendor\glm\detail\func_common.inl" />
@@ -579,7 +598,10 @@
     <None Include="src\vendor\glm\gtx\wrap.inl" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="res\textures\bg.png" />
+    <Image Include="res\textures\bird.png" />
     <Image Include="res\textures\flappy_bird.png" />
+    <Image Include="res\textures\pipe.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

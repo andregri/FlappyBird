@@ -1,6 +1,9 @@
 #include "Shader.h"
 
+#include "Error.h"
+
 #include <iostream>
+#include <stdexcept>
 #include <string>
 #include <fstream>
 #include <memory>
@@ -12,19 +15,38 @@ Shader::Shader(const std::string & path_vertex_shader, const std::string & path_
 	GLuint vertex_shader = CompileShader(path_vertex_shader, GL_VERTEX_SHADER);
 	GLuint fragment_shader = CompileShader(path_fragment_shader, GL_FRAGMENT_SHADER);
 
-	m_RendererID = glCreateProgram();
-	glAttachShader(m_RendererID, vertex_shader);
-	glAttachShader(m_RendererID, fragment_shader);
-	glLinkProgram(m_RendererID);
-	glValidateProgram(m_RendererID);
+	GLCall(m_RendererID = glCreateProgram());
+	GLCall(glAttachShader(m_RendererID, vertex_shader));
+	GLCall(glAttachShader(m_RendererID, fragment_shader));
+	GLCall(glLinkProgram(m_RendererID));
+	GLCall(glValidateProgram(m_RendererID));
 
-	glDeleteShader(vertex_shader);
-	glDeleteShader(fragment_shader);
+	GLCall(glDeleteShader(vertex_shader));
+	GLCall(glDeleteShader(fragment_shader));
 }
 
 Shader::~Shader()
 {
-	glDeleteProgram(m_RendererID);
+	GLCall(glDeleteProgram(m_RendererID));
+}
+
+GLint Shader::GetUniformLocation(const std::string & name)
+{
+	if (m_LocationCache.find(name) != m_LocationCache.end())
+	{
+		return m_LocationCache.at(name);
+	}
+	else
+	{
+		GLCall(GLint location = glGetUniformLocation(m_RendererID, name.c_str()));
+		if (location == -1)
+			std::cerr << "Could not find the uniform variable " << name << "!\n";
+		else
+			m_LocationCache[name] = location;
+
+		return location;
+	}
+	
 }
 
 GLuint Shader::CompileShader(const std::string& filepath, GLenum shader_type)
@@ -37,25 +59,25 @@ GLuint Shader::CompileShader(const std::string& filepath, GLenum shader_type)
 		shader_source += line + '\n';
 	}
 
-	GLuint shader = glCreateShader(shader_type);
+	GLCall(GLuint shader = glCreateShader(shader_type));
 	const char *shader_source_cstr = shader_source.c_str();
-	glShaderSource(shader, 1, &shader_source_cstr, NULL);
-	glCompileShader(shader);
+	GLCall(glShaderSource(shader, 1, &shader_source_cstr, NULL));
+	GLCall(glCompileShader(shader));
 
 	GLint vertex_compiled;
-	glGetShaderiv(shader, GL_COMPILE_STATUS, &vertex_compiled);
+	GLCall(glGetShaderiv(shader, GL_COMPILE_STATUS, &vertex_compiled));
 	if (vertex_compiled == GL_FALSE)
 	{
 		GLsizei log_length;
-		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &log_length);
+		GLCall(glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &log_length));
 		std::unique_ptr<GLchar[]> log_buffer = std::make_unique<GLchar[]>(log_length);
-		glGetShaderInfoLog(shader, 1024, &log_length, log_buffer.get());
+		GLCall(glGetShaderInfoLog(shader, 1024, &log_length, log_buffer.get()));
 
 		std::cerr << "Failed to compile the "
 			<< (shader_type == GL_VERTEX_SHADER ? "VERTEX" : "FRAGMENT")
 			<< " shader: " << log_buffer << '\n';
 
-		glDeleteShader(shader);
+		GLCall(glDeleteShader(shader));
 
 		return 0;
 	}

@@ -27,8 +27,9 @@ namespace test {
 
 	void TestMenu::OnImGuiRender()
 	{
-		ImGui::Begin("Debug");
+		ImGui::Begin("Test");
 
+		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
 		if (m_CurrentTest)
 		{
 			if (ImGui::Button("<-")) m_CurrentTest = nullptr;
