@@ -3,6 +3,8 @@
 
 #include <string>
 #include <iostream>
+#include <chrono>
+#include <thread>
 
 #include <glm/glm.hpp>
 
@@ -87,10 +89,17 @@ int main(void)
 
 	Game game(window, keys);
 
+	using namespace std::chrono;
+	using Framerate = duration<steady_clock::rep, std::ratio<1, 60>>;
+	auto next = steady_clock::now() + Framerate{ 1 };
+
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window))
 	{
 		game.OnUpdate();
+
+		std::this_thread::sleep_until(next);
+		next += Framerate{ 1 };
 
 		// Start the Dear ImGui frame
 		ImGui_ImplOpenGL3_NewFrame();

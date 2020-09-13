@@ -58,7 +58,7 @@ void Level::Render()
 
 	for (int i = m_Map; i < m_Map + 4; ++i)
 	{
-		glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(i*10 + m_ScrollX * 0.035f, 0, 0));
+		glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(i * 10 + m_ScrollX * 0.035f, 0, 0));
 		GLCall(glUniformMatrix4fv(m_BackgroundShader->GetUniformLocation("u_view"), 1, GL_FALSE, &view[0][0]));
 		m_BackgroundVAO.Render();
 	}
