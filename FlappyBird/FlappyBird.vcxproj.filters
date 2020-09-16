@@ -1408,6 +1408,8 @@
     <None Include="res\shaders\bg.vert.glsl" />
     <None Include="src\tests\test_shaders\frag.glsl" />
     <None Include="src\tests\test_shaders\vert.glsl" />
+    <None Include="res\shaders\bird.frag.glsl" />
+    <None Include="res\shaders\bird.vert.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\flappy_bird.png">

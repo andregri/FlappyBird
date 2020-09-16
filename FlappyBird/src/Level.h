@@ -5,18 +5,19 @@
 #include "Shader.h"
 #include "VertexArray.h"
 #include "Texture2D.h"
+#include "Bird.h"
 
 class Level
 {
 public:
-	Level(Shader * shader);
+	Level();
 	~Level();
 
 	void Update();
 	void Render();
 
 private:
-	Shader * m_BackgroundShader;
+	Shader m_BackgroundShader;
 	VertexArray m_BackgroundVAO;
 	Texture2D m_BackgroundTexture;
 

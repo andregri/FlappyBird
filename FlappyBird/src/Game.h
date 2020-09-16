@@ -2,8 +2,8 @@
 
 #include <array>
 
-#include "Shader.h"
 #include "Level.h"
+#include "Bird.h"
 
 #include <GLFW/glfw3.h>
 
@@ -24,9 +24,7 @@ private:
 	const GLFWwindow* m_Window;
 	const bool* const m_Keys;
 
-	Shader m_BackgroundShader;
 	Level m_Level;
-
-	glm::mat4 m_Proj = glm::ortho(-10.0f, 10.0f, -10.0f * 9.0f / 16.0f, 10.0f * 9.0f / 16.0f, -1.0f, 1.0f);
+	Bird m_Bird;
 };
 
