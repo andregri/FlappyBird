@@ -4,6 +4,7 @@
 
 #include "Level.h"
 #include "Bird.h"
+#include "Pipe.h"
 
 #include <GLFW/glfw3.h>
 
@@ -25,6 +26,10 @@ private:
 	const bool* const m_Keys;
 
 	Level m_Level;
+	int m_ScrollX;
+
 	Bird m_Bird;
+
+	Pipe m_Pipe;
 };
 

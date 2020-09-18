@@ -78,6 +78,9 @@
     <ClCompile Include="src\Bird.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="src\Pipe.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\vendor\glm\detail\_features.hpp">
@@ -992,6 +995,9 @@
     <ClInclude Include="src\Bird.h">
       <Filter>File di intestazione</Filter>
     </ClInclude>
+    <ClInclude Include="src\Pipe.h">
+      <Filter>File di intestazione</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="src\vendor\glm\detail\func_common.inl">
@@ -1410,6 +1416,8 @@
     <None Include="src\tests\test_shaders\vert.glsl" />
     <None Include="res\shaders\bird.frag.glsl" />
     <None Include="res\shaders\bird.vert.glsl" />
+    <None Include="res\shaders\pipe.frag.glsl" />
+    <None Include="res\shaders\pipe.vert.glsl" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\flappy_bird.png">

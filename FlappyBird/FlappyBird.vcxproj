@@ -129,6 +129,7 @@
     <ClCompile Include="src\Error.cpp" />
     <ClCompile Include="src\Level.cpp" />
     <ClCompile Include="src\Game.cpp" />
+    <ClCompile Include="src\Pipe.cpp" />
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Application.cpp" />
     <ClCompile Include="src\vendor\glm\detail\glm.cpp" />
@@ -153,6 +154,7 @@
     <ClInclude Include="src\Error.h" />
     <ClInclude Include="src\Level.h" />
     <ClInclude Include="src\Game.h" />
+    <ClInclude Include="src\Pipe.h" />
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\vendor\glm\common.hpp" />
     <ClInclude Include="src\vendor\glm\detail\compute_common.hpp" />
@@ -458,6 +460,8 @@
     <None Include="res\shaders\bg.vert.glsl" />
     <None Include="res\shaders\bird.frag.glsl" />
     <None Include="res\shaders\bird.vert.glsl" />
+    <None Include="res\shaders\pipe.frag.glsl" />
+    <None Include="res\shaders\pipe.vert.glsl" />
     <None Include="src\tests\test_shaders\frag.glsl" />
     <None Include="src\tests\test_shaders\vert.glsl" />
     <None Include="src\tests\test_shaders\fragment.shader.glsl" />
