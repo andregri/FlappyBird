@@ -27,7 +27,7 @@ Shader::Shader(const std::string & path_vertex_shader, const std::string & path_
 
 Shader::~Shader()
 {
-	GLCall(glDeleteProgram(m_RendererID));
+	//GLCall(glDeleteProgram(m_RendererID));
 }
 
 GLint Shader::GetUniformLocation(const std::string & name)

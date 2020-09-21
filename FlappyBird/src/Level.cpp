@@ -28,13 +28,11 @@ Level::Level()
 		1.0f, 0.0f
 	};
 
+	m_BackgroundShader.Bind();
+
 	m_BackgroundVAO = VertexArray(4, positions, tex_coord, 6, indices);
 	m_BackgroundTexture = Texture2D("res/textures/bg.png");
 
-	GLCall(glActiveTexture(GL_TEXTURE1));
-
-	m_BackgroundShader.Bind();
-	GLCall(glUniform1i(m_BackgroundShader.GetUniformLocation("tex"), 1));
 	m_BackgroundShader.Unbind();
 
 	//CreatePipes();
@@ -65,9 +63,6 @@ void Level::Render()
 		GLCall(glUniformMatrix4fv(m_BackgroundShader.GetUniformLocation("u_view"), 1, GL_FALSE, &view[0][0]));
 		m_BackgroundVAO.Render();
 	}
-
-	m_BackgroundTexture.Unbind();
-	m_BackgroundShader.Unbind();
 }
 
 /*void Level::RenderPipes()

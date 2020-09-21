@@ -30,6 +30,6 @@ private:
 
 	Bird m_Bird;
 
-	Pipe m_Pipe;
+	Pipe m_Pipes[10];
+	int m_Index;
 };
-

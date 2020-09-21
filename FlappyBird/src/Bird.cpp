@@ -25,13 +25,11 @@ Bird::Bird(const bool keys[])
 		1.0f, 0.0f
 	};
 
+	m_Shader.Bind();
+
 	m_Mesh = VertexArray(4, positions, tex_coord, 6, indices);
 	m_Texture = Texture2D("res/textures/bird.png");
 
-	GLCall(glActiveTexture(GL_TEXTURE1));
-
-	m_Shader.Bind();
-	GLCall(glUniform1i(m_Shader.GetUniformLocation("tex"), 1));
 	m_Shader.Unbind();
 }
 
@@ -66,7 +64,9 @@ void Bird::Render()
 	glm::mat4 translationY = glm::translate(glm::mat4(1.0f), m_Position);
 	glm::mat4 model = glm::rotate(translationY, m_Rotation, glm::vec3(0.0f, 0.0f, 1.0f));
 	GLCall(glUniformMatrix4fv(m_Shader.GetUniformLocation("u_model"), 1, GL_FALSE, &model[0][0]));
+	
 	m_Texture.Bind();
 	m_Mesh.Render();
+
 	m_Shader.Unbind();
 }
