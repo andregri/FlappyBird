@@ -6,7 +6,9 @@
 
 
 Level::Level()
-	: m_Map(0), m_BackgroundShader("res/shaders/bg.vert.glsl", "res/shaders/bg.frag.glsl"),
+	: m_Map(0), m_Time(0),
+	m_BackgroundShader("res/shaders/bg.vert.glsl", "res/shaders/bg.frag.glsl"),
+	m_FadeShader("res/shaders/fade.vert.glsl", "res/shaders/fade.frag.glsl"),
 	m_Projection(glm::ortho(-10.0f, 10.0f, -10.0f * 9.0f / 16.0f, 10.0f * 9.0f / 16.0f, -1.0f, 1.0f))
 {
 	float positions[] = {
@@ -31,6 +33,7 @@ Level::Level()
 	m_BackgroundShader.Bind();
 
 	m_BackgroundVAO = VertexArray(4, positions, tex_coord, 6, indices);
+	m_FadeVAO = VertexArray(6);
 	m_BackgroundTexture = Texture2D("res/textures/bg.png");
 
 	m_BackgroundShader.Unbind();
@@ -48,6 +51,8 @@ void Level::Update(int scroll_x)
 {
 	m_ScrollX = scroll_x;
 	if ((-m_ScrollX) % 300 == 0) m_Map++;
+
+	m_Time += 0.005;
 }
 
 void Level::Render()
@@ -63,4 +68,8 @@ void Level::Render()
 		GLCall(glUniformMatrix4fv(m_BackgroundShader.GetUniformLocation("u_view"), 1, GL_FALSE, &view[0][0]));
 		m_BackgroundVAO.Render();
 	}
+
+	m_FadeShader.Bind();
+	GLCall(glUniform1f(m_FadeShader.GetUniformLocation("u_time"), m_Time));
+	m_FadeVAO.Render();
 }

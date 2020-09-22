@@ -4,6 +4,12 @@
 
 #include "Error.h"
 
+VertexArray::VertexArray(int count)
+	: m_NumIndices(count), m_IndicesObject(0)
+{
+	GLCall(glGenVertexArrays(1, &m_VertexArrayObject));
+}
+
 VertexArray::VertexArray(int n_vertices, float positions[], float tex_coord[], int n_indices, unsigned int indices[])
 	: m_PositionAttribLocation(0), m_TexCoordAttribLocation(1)
 {
@@ -47,18 +53,27 @@ VertexArray::~VertexArray()
 void VertexArray::Bind()
 {
 	GLCall(glBindVertexArray(m_VertexArrayObject));
-	GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndicesObject));
+	if(m_IndicesObject > 0)
+		GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndicesObject));
 }
 
 void VertexArray::Unbind()
 {
-	GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
+	if (m_IndicesObject > 0)
+		GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
 	GLCall(glBindVertexArray(0));
 }
 
 void VertexArray::Draw()
 {
-	GLCall(glDrawElements(GL_TRIANGLES, m_NumIndices, GL_UNSIGNED_INT, 0));
+	if (m_IndicesObject > 0)
+	{
+		GLCall(glDrawElements(GL_TRIANGLES, m_NumIndices, GL_UNSIGNED_INT, 0));
+	}
+	else
+	{
+		GLCall(glDrawArrays(GL_TRIANGLES, 0, m_NumIndices));
+	}
 }
 
 void VertexArray::Render()

@@ -13,8 +13,8 @@ Game::Game(const GLFWwindow* window, const bool keys[])
 	m_PlayerHasControl(true)
 {
 	//GLCall(glEnable(GL_DEPTH_TEST));
-	//GLCall(glEnable(GL_BLEND));
-	//GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+	GLCall(glEnable(GL_BLEND));
+	GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
 
 	for (int i = 0; i < 10; i += 2)
 	{

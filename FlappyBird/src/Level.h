@@ -23,10 +23,14 @@ public:
 
 private:
 	Shader m_BackgroundShader;
+	Shader m_FadeShader;
+
 	VertexArray m_BackgroundVAO;
+	VertexArray m_FadeVAO;
+
 	Texture2D m_BackgroundTexture;
 	int m_ScrollX;
-
+	float m_Time;
 	int m_Map;
 
 	const glm::mat4 m_Projection;

@@ -460,6 +460,8 @@
     <None Include="res\shaders\bg.vert.glsl" />
     <None Include="res\shaders\bird.frag.glsl" />
     <None Include="res\shaders\bird.vert.glsl" />
+    <None Include="res\shaders\fade.frag.glsl" />
+    <None Include="res\shaders\fade.vert.glsl" />
     <None Include="res\shaders\pipe.frag.glsl" />
     <None Include="res\shaders\pipe.vert.glsl" />
     <None Include="src\tests\test_shaders\frag.glsl" />

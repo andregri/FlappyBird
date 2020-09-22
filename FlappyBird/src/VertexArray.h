@@ -6,6 +6,7 @@ class VertexArray
 {
 public:
 	VertexArray() {};
+	VertexArray(int count);
 	VertexArray(int n_vertices, float positions[], float tex_coord[], int n_indices, unsigned int indices[]);
 	~VertexArray();
 	void Bind();
