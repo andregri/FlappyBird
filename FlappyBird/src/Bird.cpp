@@ -7,10 +7,10 @@ Bird::Bird(const bool keys[])
 	: m_Shader("res/shaders/bird.vert.glsl", "res/shaders/bird.frag.glsl"), m_Keys(keys)
 {
 	float positions[] = {
-		-SIZE / 2.0f, -SIZE / 2.0f, 0.0f,	// left - bottom
-		-SIZE / 2.0f,  SIZE / 2.0f, 0.0f,	// left - top
-		 SIZE / 2.0f,  SIZE / 2.0f, 0.0f,	// right - top
-		 SIZE / 2.0f, -SIZE / 2.0f, 0.0f,	// right - bottom
+		-size / 2.0f, -size / 2.0f, 0.0f,	// left - bottom
+		-size / 2.0f,  size / 2.0f, 0.0f,	// left - top
+		 size / 2.0f,  size / 2.0f, 0.0f,	// right - top
+		 size / 2.0f, -size / 2.0f, 0.0f,	// right - bottom
 	};
 
 	unsigned int indices[] = {
@@ -38,21 +38,16 @@ Bird::~Bird()
 {
 }
 
-void Bird::Update()
+void Bird::Update(bool playerHasControl)
 {
 	m_Position.y -= m_DeltaY;
 
-	if (m_Keys[GLFW_KEY_SPACE])
+	if (m_Keys[GLFW_KEY_SPACE] && playerHasControl)
 		m_DeltaY = -0.15f;
 	else
 		m_DeltaY += 0.01f;
 
 	m_Rotation = -m_DeltaY * 2.0f;
-}
-
-void Bird::Fall()
-{
-	m_DeltaY = -0.15f;
 }
 
 void Bird::Render()
@@ -68,5 +63,10 @@ void Bird::Render()
 	m_Texture.Bind();
 	m_Mesh.Render();
 
-	m_Shader.Unbind();
+	m_Shader.Unbind(); 
+}
+
+void Bird::Fall()
+{
+	m_DeltaY = -0.1f;
 }

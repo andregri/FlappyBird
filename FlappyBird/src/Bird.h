@@ -13,14 +13,16 @@ public:
 	Bird(const bool keys[]);
 	~Bird();
 
-	void Update();
+	void Update(bool playerHasControl);
 	void Render();
 
 	void Fall();
 
+	const float size = 1.0f;
+	const glm::vec3& GetPosition() const { return m_Position; }
+
 private:
 	Shader m_Shader;
-	float SIZE = 1.0f;
 	VertexArray m_Mesh;
 	Texture2D m_Texture;
 	glm::vec3 m_Position;

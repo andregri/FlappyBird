@@ -16,9 +16,13 @@ public:
 	~Pipe();
 
 	void Update(int scroll_x);
-	void Render();
+	void Render(bool isTop);
 
 	void SetPosition(float x, float y) { m_Position.x = x; m_Position.y = y; }
+	const glm::vec3& GetPosition() const { return m_Position; }
+
+	const float width = 1.5f;
+	const float height = 8.0f;
 
 private:
 	Shader m_Shader;
@@ -29,8 +33,4 @@ private:
 	const glm::mat4 m_Proj;
 
 	int m_ScrollX;
-
-	const float m_Width = 1.5f;
-	const float m_Height = 8.0f;
 };
-

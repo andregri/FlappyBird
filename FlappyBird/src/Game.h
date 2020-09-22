@@ -21,6 +21,8 @@ public:
 	void OnRender();
 	void OnImGuiRender();
 
+	bool Collision();
+
 private:
 	const GLFWwindow* m_Window;
 	const bool* const m_Keys;
@@ -32,4 +34,9 @@ private:
 
 	Pipe m_Pipes[10];
 	int m_Index;
+	int m_Random;
+
+	bool m_PlayerHasControl;
+
+	const int m_OFFSET = 5.0f;
 };

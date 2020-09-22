@@ -8,9 +8,9 @@ Pipe::Pipe()
 {
 	float positions[] = {
 		0.0f,	 0.0f,     0.0f,	// left - bottom
-		0.0f,	 m_Height, 0.0f,	// left - top
-		m_Width, m_Height, 0.0f,	// right - top
-		m_Width, 0.0f,	   0.0f,	// right - bottom
+		0.0f,	 height,   0.0f,	// left - top
+		width,	 height,   0.0f,	// right - top
+		width, 	 0.0f,	   0.0f,	// right - bottom
 	};
 
 	unsigned int indices[] = {
@@ -39,16 +39,18 @@ void Pipe::Update(int scroll_x)
 	m_ScrollX = scroll_x;
 }
 
-void Pipe::Render()
+void Pipe::Render(bool isTop)
 {
 	m_Shader.Bind();
 
-	glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(m_ScrollX * 0.035f, 0, 0));
+	glm::mat4 view = glm::translate(glm::mat4(1.0f), glm::vec3(m_ScrollX * 0.05f, 0, 0));
 	GLCall(glUniformMatrix4fv(m_Shader.GetUniformLocation("u_view"), 1, GL_FALSE, &view[0][0]));
 	GLCall(glUniformMatrix4fv(m_Shader.GetUniformLocation("u_proj"), 1, GL_FALSE, &m_Proj[0][0]));
 
 	glm::mat4 model = glm::translate(glm::mat4(1.0f), m_Position);
 	GLCall(glUniformMatrix4fv(m_Shader.GetUniformLocation("u_model"), 1, GL_FALSE, &model[0][0]));
+
+	GLCall(glUniform1i(m_Shader.GetUniformLocation("u_top"), isTop ? 1 : 0));
 
 	m_Texture.Bind();
 	m_VAO.Render();
